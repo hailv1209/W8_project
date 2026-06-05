@@ -1,7 +1,7 @@
 # W8 K8s Challenge Lab - Deployment Evidence
 
-**Student**: Pham Tung Duong / XB-DN26-105  
-**Lab**: Week 8 - Kubernetes on AWS with Terraform  
+**Student**: Lê Văn Hải / XB-DN26-057 
+**Lab**: Week 8 - Chalange Kubernetes on AWS with Terraform  
 **Region**: us-west-2  
 **Status**: **DEPLOYED & ACCESSIBLE**
 
@@ -77,6 +77,7 @@ graph TB
     style Service fill:#90EE90
     style Pod1 fill:#FFB6C1
     style Pod2 fill:#FFB6C1
+```
 
 ---
 
@@ -98,11 +99,10 @@ terraform init
 - Initializes backend state
 
 **Screenshot Evidence**:
-```
-[INSERT SCREENSHOT: terraform init output showing provider downloads]
-Location: asset/step1_init.png
-Expected: "Terraform has been successfully initialized!"
-```
+
+![Terraform Init](asset/init.png)
+
+*Expected: "Terraform has been successfully initialized!" message in terminal*
 
 ---
 
@@ -126,11 +126,10 @@ terraform plan -out=tfplan
   - 1 Elastic IP
 
 **Screenshot Evidence**:
-```
-[INSERT SCREENSHOT: terraform plan summary]
-Location: asset/step2_plan.png
-Expected: "Plan: XX to add, 0 to change, 0 to destroy"
-```
+
+![Terraform Plan](asset/plan.png)
+
+*Expected: "Plan: XX to add, 0 to change, 0 to destroy" summary*
 
 ---
 
@@ -155,11 +154,10 @@ terraform apply tfplan
 **Execution Time**: ~5-7 minutes
 
 **Screenshot Evidence**:
-```
-[INSERT SCREENSHOT: terraform apply complete]
-Location: asset/step3_apply.png
-Expected: "Apply complete! Resources: X added, 0 changed, 0 destroyed"
-```
+
+![Terraform Apply](asset/apply.png)
+
+*Expected: "Apply complete! Resources: X added, 0 changed, 0 destroyed" message*
 
 ---
 
@@ -169,6 +167,7 @@ Expected: "Apply complete! Resources: X added, 0 changed, 0 destroyed"
 
 #### 4.1 AWS Resources Verified
 
+**Verification Commands**:
 ```bash
 # Check EC2 instance
 aws ec2 describe-instances --region us-west-2 \
@@ -184,18 +183,14 @@ aws elbv2 describe-target-health --region us-west-2 \
   --target-group-arn <TARGET-GROUP-ARN>
 ```
 
-**Screenshot Evidence**:
-```
-[INSERT SCREENSHOT: AWS resources status]
-Location: asset/step4a_aws_resources.png
-Expected: 
-  - EC2 State: "running"
-  - ALB State: "active"
-  - Target Health: "healthy"
-```
+**Expected Results**:
+- ✅ EC2 State: "running"
+- ✅ ALB State: "active"
+- ✅ Target Health: "healthy"
 
 #### 4.2 Kubernetes Resources Verified
 
+**Verification Commands**:
 ```bash
 # SSH to EC2 instance
 ssh -i <key.pem> ubuntu@<EC2-PUBLIC-IP>
@@ -213,15 +208,11 @@ kubectl get svc
 systemctl status xbrain-port-forward
 ```
 
-**Screenshot Evidence**:
-```
-[INSERT SCREENSHOT: Kubernetes resources status]
-Location: asset/step4b_k8s_resources.png
-Expected:
-  - Deployment: xbrain-app (2 replicas)
-  - Service: xbrain-service (NodePort:30080)
-  - Pod Status: Running (2/2)
-```
+**Expected Results**:
+- ✅ Deployment: xbrain-app (2 replicas)
+- ✅ Service: xbrain-service (NodePort:30080)
+- ✅ Pod Status: Running (2/2)
+- ✅ Port-forward service active
 
 #### 4.3 Application Accessible
 
@@ -236,15 +227,15 @@ curl -I http://xbrain-k8s-7c440e-alb-1782513482.us-west-2.elb.amazonaws.com/
 - Content-Type: text/html
 
 **Screenshot Evidence**:
-```
-[INSERT SCREENSHOT: Browser showing XBrain application]
-Location: asset/step4c_app_running.png
-Expected:
-  - XBrain branded interface visible
-  - Orange color scheme (#F2913D, #F27830, #D95323)
-  - Real-time system information displayed
-  - HTTP 200 response
-```
+
+![XBrain Application Running](asset/terraform_apply_complete.png)
+
+**Verification**:
+- ✅ XBrain branded interface visible
+- ✅ Orange color scheme (#F2913D, #F27830, #D95323)
+- ✅ Real-time system information displayed
+- ✅ HTTP 200 response
+- ✅ Application accessible via ALB URL
 
 | Component | Technology | Details |
 |-----------|-----------|---------|
