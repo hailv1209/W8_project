@@ -1,28 +1,8 @@
 # W8 K8s Challenge Lab - Deployment Evidence
 
-**Student**: Lê Văn Hải / XB-DN26-057 
+**Student**: Lê Văn Hải / XB-DN26-057  
 **Lab**: Week 8 - Chalange Kubernetes on AWS with Terraform  
 **Region**: us-west-2  
-**Status**: **DEPLOYED & ACCESSIBLE**
-
----
-
-## Table of Contents
-1. [Live Deployment](#live-deployment)
-2. [Infrastructure Architecture](#infrastructure-architecture)
-3. [Deployment Steps](#deployment-steps)
-4. [Technology Stack](#technology-stack)
-5. [Deployment Details](#deployment-details)
-6. [Verification Results](#verification-results)
-7. [Compliance Checklist](#compliance-checklist)
-
----
-
-## Live Deployment
-
-**ALB URL**: http://xbrain-k8s-7c440e-alb-1782513482.us-west-2.elb.amazonaws.com
-
-**Status**: ✅ **DEPLOYED & ACCESSIBLE**
 
 ---
 
@@ -671,85 +651,6 @@ EC2 to K8s: ~2ms (localhost)
 Pod response: ~30ms (application processing)
 Total: ~37ms average response time
 ```
-
----
-
-## Compliance Checklist
-
-### ✅ Terraform Infrastructure as Code
-
-- [x] Terraform version ≥ 1.5.0
-- [x] State file management (`terraform.tfstate`)
-- [x] Variable definitions (`variables.tf`)
-- [x] Output definitions (`outputs.tf`)
-- [x] Provider configuration (`providers.tf`)
-- [x] Clean, documented code structure
-- [x] Resource naming conventions applied
-- [x] Common tags for governance
-
-### ✅ Multi-Provider Requirement
-
-- [x] AWS Provider (hashicorp/aws ~> 5.0) - Infrastructure provisioning
-- [x] Kubernetes Provider (hashicorp/kubernetes ~> 2.23) - K8s management
-- [x] Random Provider (hashicorp/random ~> 3.5) - Utility functions
-- [x] ≥ 2 different service providers deployed (AWS + Kubernetes ✓)
-
-### ✅ AWS Infrastructure
-
-- [x] VPC with CIDR 10.0.0.0/16
-- [x] Multi-AZ deployment (2 public subnets in us-west-2a, us-west-2b)
-- [x] Internet Gateway for public internet access
-- [x] Application Load Balancer (ALB)
-- [x] Target Group with health checks
-- [x] EC2 instance (t3.medium)
-- [x] Security Groups (ALB + EC2) with least privilege rules
-- [x] Elastic IP for static public IP
-- [x] Encrypted root volume (gp3, 20GB, AES-256)
-- [x] Enhanced monitoring enabled
-
-### ✅ Kubernetes Deployment
-
-- [x] Minikube cluster running on EC2
-- [x] Kubernetes deployment (xbrain-app with 2 replicas)
-- [x] Kubernetes service (xbrain-service, NodePort:30080)
-- [x] kubectl port-forward systemd service
-- [x] Pod specifications configured
-- [x] Replica set management enabled
-
-### ✅ Application & Accessibility
-
-- [x] Docker containerized Nginx application
-- [x] Custom Alpine-based image
-- [x] 2 pod replicas for redundancy
-- [x] Application accessible via ALB URL (HTTP:80)
-- [x] Browser verified working
-- [x] XBrain branding and UI confirmed
-- [x] Real-time features working (clock, hostname display)
-- [x] Health checks passing (HTTP 200 OK)
-
-### ✅ Documentation & Evidence
-
-- [x] EVIDENCE.md documentation completed
-- [x] Step-by-step deployment guide (init → plan → apply → verify)
-- [x] Architecture diagram with traffic flow
-- [x] Technology stack documented
-- [x] Deployment details specified
-- [x] Verification results recorded
-- [x] Screenshot placeholders for:
-  - [x] terraform init output
-  - [x] terraform plan summary
-  - [x] terraform apply results
-  - [x] AWS resources status
-  - [x] Kubernetes resources status
-  - [x] Browser showing application
-
-### ✅ Deployment Commands Documentation
-
-- [x] terraform init command
-- [x] terraform plan command  
-- [x] terraform apply command
-- [x] Verification scripts provided
-- [x] Cleanup instructions included
 
 ---
 
