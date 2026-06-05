@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xbrain x AWS Accelerator & Internship Program</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* =============================================
+           Xbrain x AWS Accelerator — Styles
+           ============================================= */
+
+        :root {
+            --orange-primary: #F2913D;
+            --orange-light: #F2B885;
+            --orange-dark: #F27830;
+            --red-accent: #D95323;
+            --gray-bg: #F2F2F2;
+            --white: #FFFFFF;
+            --dark: #1a1a1a;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--gray-bg);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* =============================================
+           HERO SECTION
+           ============================================= */
+
+        .hero {
+            position: relative;
+            flex: 1;
+            min-height: calc(100vh - 100px);
+            background: linear-gradient(135deg, #F2913D 0%, #F27830 40%, #D95323 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(242, 120, 48, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(242, 184, 133, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(217, 83, 35, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
+            max-width: 800px;
+        }
+
+        .main-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-title .and-symbol {
+            color: var(--orange-light);
+            font-size: 1.1em;
+        }
+
+        .sub-title {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.92);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            position: relative;
+            padding: 0 24px;
+        }
+
+        .sub-title::before,
+        .sub-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 16px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 1px;
+        }
+
+        .sub-title::before {
+            left: 0;
+        }
+
+        .sub-title::after {
+            right: 0;
+        }
+
+        /* =============================================
+           FOOTER
+           ============================================= */
+
+        .footer {
+            background-color: var(--dark);
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            flex-shrink: 0;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .footer-logo {
+            line-height: 0;
+        }
+
+        .footer-logo svg {
+            display: block;
+        }
+
+        .footer-text {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* =============================================
+           CLOCK
+           ============================================= */
+
+        .clock-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .clock {
+            text-align: right;
+        }
+
+        .clock-date {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: rgba(242, 145, 61, 0.8);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .clock-time {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            font-variant-numeric: tabular-nums;
+            line-height: 1;
+        }
+
+        /* =============================================
+           RESPONSIVE
+           ============================================= */
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 24px 48px;
+            }
+
+            .footer {
+                flex-direction: column;
+                height: auto;
+                padding: 24px 24px 20px;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-brand {
+                align-items: center;
+            }
+
+            .clock {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.6rem;
+            }
+
+            .sub-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">
+                Xbrain <span class="and-symbol">&</span> AWS Accelerator<br>&amp; Internship Program
+            </h1>
+            <p class="sub-title">we are XBuilders</p>
+        </div>
+    </header>
+
+    <footer class="footer">
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" width="120" height="40">
+                    <circle cx="20" cy="20" r="16" fill="#F2913D" />
+                    <text x="20" y="25" font-family="Montserrat, sans-serif" font-size="12" font-weight="800"
+                        fill="white" text-anchor="middle">X</text>
+                    <text x="52" y="25" font-family="Montserrat, sans-serif" font-size="13" font-weight="700"
+                        fill="#F2913D">BRAIN</text>
+                </svg>
+            </div>
+            <p class="footer-text">Powered by Xbrain &amp; AWS</p>
+        </div>
+        <div class="clock-wrapper">
+            <div class="clock">
+                <div class="clock-date" id="clockDate"></div>
+                <div class="clock-time" id="clockTime"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'];
+
+            const dayName = days[now.getDay()];
+            const monthName = months[now.getMonth()];
+            const dateNum = now.getDate();
+            const year = now.getFullYear();
+
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('clockDate').textContent =
+                `${dayName}, ${monthName} ${dateNum}, ${year}`;
+            document.getElementById('clockTime').textContent =
+                `${hours}:${minutes}:${seconds}`;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+</body>
+
+</html>
