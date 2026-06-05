@@ -28,7 +28,7 @@ provider "aws" {
       Project     = "xbrain-k8s-challenge"
       ManagedBy   = "Terraform"
       Environment = "lab"
-      Owner       = "ptduong04"
+      Owner       = "lvhai"
     }
   }
 }
